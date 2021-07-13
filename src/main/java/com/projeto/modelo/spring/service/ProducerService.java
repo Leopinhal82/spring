@@ -18,7 +18,7 @@ public class ProducerService {
     private String routingKey;
 
     // Producer - Envia os dados para a Fila
-    public void enviaMensagem(Object mensagem){
+    public void enviarMensagem(Object mensagem){
         this.rabbitTemplate.convertAndSend(exchange, routingKey, mensagem);
     }
 }

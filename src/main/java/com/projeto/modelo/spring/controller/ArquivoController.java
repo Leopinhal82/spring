@@ -37,7 +37,7 @@ public class ArquivoController {
     public ResponseEntity<Void> inserirArquivo(@RequestBody ArquivoDto arquivoDto) {
         var persistentArquivo = new Arquivo(arquivoDto);
 
-        arquivoService.inserir(persistentArquivo);
+        arquivoService.insert(persistentArquivo);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -66,6 +66,6 @@ public class ArquivoController {
     public ResponseEntity<Arquivo> atualizaProduto(@PathVariable String id, @Valid @RequestBody ArquivoDto arquivoDto) {
 
         var persistentArquivo = new Arquivo(arquivoDto);
-        return arquivoService.atualizar(id, persistentArquivo);
+        return arquivoService.update(id, persistentArquivo);
     }
 }

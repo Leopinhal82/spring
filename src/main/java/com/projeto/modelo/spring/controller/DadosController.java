@@ -23,7 +23,7 @@ public class DadosController {
 
         var persistentDados =  new Dados(dados);
         System.out.println("Enviando para Fila Código: " + persistentDados.getCodigo() + " Nome: " + persistentDados.getNome());
-        producerService.enviaMensagem(persistentDados);
+        producerService.enviarMensagem(persistentDados);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

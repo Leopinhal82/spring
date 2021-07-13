@@ -16,11 +16,11 @@ public class ArquivoService {
     @Autowired
     private ArquivoRepository arquivoRepository;
 
-    public void inserir(Arquivo arquivo) {
+    public void insert(Arquivo arquivo) {
         arquivoRepository.save(arquivo);
     }
 
-    public ResponseEntity<Arquivo> atualizar(String id, Arquivo arquivo) {
+    public ResponseEntity<Arquivo> update(String id, Arquivo arquivo) {
 
         Optional<Arquivo> existente = findById(id);
         if(!existente.isPresent()) {
