@@ -1,6 +1,9 @@
 package com.projeto.modelo.spring.service;
 
 import com.projeto.modelo.spring.entity.Arquivo;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -48,8 +51,27 @@ public class ExcelService {
 
             Row row;
 
+            row = worksheet.createRow(0);
+
+            row.createCell(0).setCellValue("Código");
+            row.createCell(1).setCellValue("Nome");
+            row.createCell(2).setCellValue("Conteúdo");
+            row.createCell(3).setCellValue("Data");
+
+            CellStyle headerStyle = workbook.createCellStyle();
+            headerStyle.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
+            headerStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+            headerStyle.setAlignment(CellStyle.ALIGN_CENTER);
+            headerStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+
+            row.getCell(0).setCellStyle(headerStyle);
+            row.getCell(1).setCellStyle(headerStyle);
+            row.getCell(2).setCellStyle(headerStyle);
+            row.getCell(3).setCellStyle(headerStyle);
+
+
             for (var x = 0; x < listArquivo.size(); x++) {
-                row = worksheet.createRow(x);
+                row = worksheet.createRow(x+1);
                 row.createCell(0).setCellValue(listArquivo.get(x).getId());
                 row.createCell(1).setCellValue(listArquivo.get(x).getNome());
                 row.createCell(2).setCellValue(listArquivo.get(x).getConteudo());
