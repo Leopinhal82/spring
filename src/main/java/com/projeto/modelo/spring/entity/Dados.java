@@ -8,13 +8,12 @@ public class Dados {
 
     @Id
     private int codigo;
+    private String nome;
 
     public Dados(DadosDto dadosDto) {
         this.codigo = dadosDto.getCodigo();
         this.nome = dadosDto.getNome();
     }
-
-    private String nome;
 
     public Dados(String nome) {
         this.nome = nome;
