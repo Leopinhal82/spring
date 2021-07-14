@@ -9,7 +9,6 @@ import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.List;
 
 @Component
 public class ConsumerService {
@@ -17,28 +16,12 @@ public class ConsumerService {
     @Autowired
     ArquivoService arquivoService;
 
-    /*@RabbitListener(ackMode = "MANUAL", queues="${amq.rabbitmq.queue}" )
-    public void getDados(Dados dados, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
-        try {
-            System.out.println("Lendo Fila Código 1: " + dados.getCodigo() + " Nome: " + dados.getNome());
-            if (dados.getCodigo() == 1) {
-                System.out.println("Removendo 1");
-                channel.basicAck(tag, false);
-            }
-        }catch (Exception ex)
-        {
-            System.out.println(ex.getMessage());
-            channel.basicReject (tag,false);
-        }
-    }*/
-
     @RabbitListener(ackMode = "MANUAL", queues="${amq.rabbitmq.queue}" )
-    public void persistirArquivo(List<Arquivo> listArquivo, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
+    public void persistirArquivo(Arquivo arquivo, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
         try {
-            for (Arquivo item: listArquivo) {
-                System.out.println("Lendo Fila Código: " + item.getId() + " Nome: " + item.getNome());
-                arquivoService.insert(item);
-            }
+
+            System.out.println("Lendo Fila Código: " + arquivo.getId() + " Nome: " + arquivo.getNome());
+            arquivoService.insert(arquivo);
             channel.basicAck(tag, false);
 
         }catch (Exception ex)

@@ -1,7 +1,6 @@
 package com.projeto.modelo.spring.service;
 
 import com.projeto.modelo.spring.entity.Arquivo;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
@@ -36,7 +35,7 @@ public class ExcelService {
             arquivo.setId(row.getCell(0) == null ? "" : row.getCell(0).getStringCellValue());
             arquivo.setNome(row.getCell(1) == null ? "" : row.getCell(1).getStringCellValue());
             arquivo.setConteudo(row.getCell(2) == null ? "" : row.getCell(2).getStringCellValue());
-            arquivo.setData(row.getCell(3) == null ? "" : row.getCell(3).getDateCellValue().toString());
+            arquivo.setData(row.getCell(3) == null ? "" : row.getCell(3).getStringCellValue());
             arquivoList.add(arquivo);
         }
 
@@ -44,7 +43,6 @@ public class ExcelService {
     }
 
     public void escreverArquivo(String nomeArquivo, List<Arquivo> listArquivo) throws IOException {
-
 
         try(var workbook = new XSSFWorkbook();) {
             var worksheet = workbook.createSheet(NOME_SHEET);
