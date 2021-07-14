@@ -5,12 +5,12 @@ import javax.validation.ConstraintValidatorContext;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class DateValidatorCheck implements ConstraintValidator<IDateValidatorCheck, String> {
+public class DateValidatorCheck implements ConstraintValidator<AnnotationDateValidator, String> {
 
     private String value;
 
     @Override
-    public void initialize(IDateValidatorCheck constraintAnnotation) {
+    public void initialize(AnnotationDateValidator constraintAnnotation) {
         this.value = constraintAnnotation.value();
     }
 

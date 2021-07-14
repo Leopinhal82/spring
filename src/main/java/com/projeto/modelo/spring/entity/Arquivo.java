@@ -1,7 +1,8 @@
 package com.projeto.modelo.spring.entity;
 
 import com.projeto.modelo.spring.dto.ArquivoDto;
-import com.projeto.modelo.spring.util.IDateValidatorCheck;
+import com.projeto.modelo.spring.util.AnnotationCPFValidator;
+import com.projeto.modelo.spring.util.AnnotationDateValidator;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,12 +15,14 @@ public class Arquivo {
     @Id
     private String id;
 
-    @IDateValidatorCheck
+    @AnnotationDateValidator
     public String data;
     @NotEmpty(message = "O Nome não pode ser vazio.")
     @Size(max = 6, message = "O Nome deve ter no máximo 6 posições")
     public String nome;
     private String conteudo;
+    @AnnotationCPFValidator
+    private String Cpf;
 
     public Arquivo(ArquivoDto arquivoDto) {
         this.id = arquivoDto.getId();
@@ -61,4 +64,8 @@ public class Arquivo {
     public void setConteudo(String conteudo) {
         this.conteudo = conteudo;
     }
+
+    public String getCpf() { return Cpf;}
+
+    public void setCpf(String cpf) { Cpf = cpf; }
 }

@@ -36,6 +36,7 @@ public class ExcelService {
             arquivo.setNome(row.getCell(1) == null ? "" : row.getCell(1).getStringCellValue());
             arquivo.setConteudo(row.getCell(2) == null ? "" : row.getCell(2).getStringCellValue());
             arquivo.setData(row.getCell(3) == null ? "" : row.getCell(3).getStringCellValue());
+            arquivo.setCpf(row.getCell(4) == null ? "" : row.getCell(4).getStringCellValue());
             arquivoList.add(arquivo);
         }
 

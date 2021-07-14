@@ -1,5 +1,7 @@
 package com.projeto.modelo.spring.entity;
 import com.projeto.modelo.spring.dto.DadosDto;
+import com.projeto.modelo.spring.util.AnnotationCPFValidator;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -37,4 +39,6 @@ public class Dados {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+
 }
