@@ -22,7 +22,7 @@ public class Arquivo {
     public String nome;
     private String conteudo;
     @AnnotationCPFValidator
-    private String Cpf;
+    private String cpf;
 
     public Arquivo(ArquivoDto arquivoDto) {
         this.id = arquivoDto.getId();
@@ -65,7 +65,7 @@ public class Arquivo {
         this.conteudo = conteudo;
     }
 
-    public String getCpf() { return Cpf;}
+    public String getCpf() { return cpf;}
 
-    public void setCpf(String cpf) { Cpf = cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
 }

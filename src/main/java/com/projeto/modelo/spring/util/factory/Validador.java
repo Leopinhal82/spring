@@ -1,13 +1,14 @@
 package com.projeto.modelo.spring.util.factory;
 
-import org.apache.poi.ss.formula.functions.T;
-import org.springframework.stereotype.Service;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.stereotype.Component;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import java.util.Set;
 
-@Service
+@Component
+@Log4j2
 public class Validador {
 
     public boolean validar(Object paraValidar) {
@@ -18,7 +19,7 @@ public class Validador {
         violations = validator.validate(paraValidar);
 
         for (ConstraintViolation<Object> violation : violations) {
-            System.out.println(violation.getMessage());
+            log.info(violation.getMessage());
             return false;
         }
 
