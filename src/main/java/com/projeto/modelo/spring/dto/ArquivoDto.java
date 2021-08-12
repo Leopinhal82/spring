@@ -9,6 +9,7 @@ public class ArquivoDto {
     private String data;
     private String nome;
     private String conteudo;
+    private String detalhes;
 
     public ArquivoDto(String nome, String conteudo) {
         this.nome = nome;
