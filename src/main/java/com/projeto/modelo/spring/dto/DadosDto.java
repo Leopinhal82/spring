@@ -4,7 +4,6 @@ public class DadosDto {
 
     private int codigo;
     private String nome;
-    private String descricao;
 
     public int getCodigo() {
         return codigo;
